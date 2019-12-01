@@ -1,0 +1,34 @@
+SQL 
+
+1. SQL Scripts are in the Scripts folder. The folder has 3 sql files: pr_GetOrderSummary.sql, dbo.udf_GetTotal.sql and deployment_script_01.sql.
+2. Only the deployment_script_01.sql needs to be run as it contains both the procedure and function.
+3. The tests can also be run from deployment_script_01.sql file.
+
+Web API
+
+Assumptions:
+  - MSMQ has to be installed on the machine or server hosting the WebAPI application
+
+1. The UserSignup POST URL : https://localhost:44340/api/user.  
+ Sample Request Body: 	
+{
+	"Email": "Test",
+	"FirstName": "Test",
+	"LastName": "Test",
+	"PasswordHash": "Test"
+}
+
+2. Get request URL: https://localhost:44340/api/user
+Sample Response:
+[
+    {
+        "email": "Test1",
+        "firstName": "Test1",
+        "lastName": "Test1"
+    },
+    {
+        "email": "Test2",
+        "firstName": "Test2",
+        "lastName": "Test2"
+    }
+]
