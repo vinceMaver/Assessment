@@ -1,7 +1,7 @@
 CREATE PROCEDURE pr_GetOrderSummary
 (
 	@StartDate DATE,
-  @EndDate DATE,
+  	@EndDate DATE,
 	@EmployeeID INT,
 	@CustomerID NCHAR(10)
 )
@@ -17,7 +17,7 @@ BEGIN
 		SELECT E.TitleOfCourtesy + ' ' + E.FirstName + ' ' + E.LastName AS [EmployeeFullName]
 			  ,S.CompanyName		AS [Shipper]
 			  ,C.CompanyName		AS [Customer]
-			  ,COUNT(distinct O.OrderId)		AS [NumberOfOders]
+			  ,COUNT(distinct O.OrderId)	AS [NumberOfOders]
 			  ,O.OrderDate			AS [Date]
 			  ,O.Freight		AS [TotalFreightCost]
 			  ,COUNT(OD.ProductID)	AS [NumberOfDifferentProducts]
@@ -30,7 +30,7 @@ BEGIN
 		WHERE O.OrderDate between @StartDate AND @EndDate
 			  AND E.EmployeeID = CASE WHEN @EmployeeID IS NULL THEN E.EmployeeID ELSE @EmployeeID END
 			  AND C.CustomerID = CASE WHEN @CustomerID IS NULL ThEN C.CustomerID ELSE @CustomerID END
-		GROUP BY O.OrderDate, E.TitleOfCourtesy, E.FirstName, E.LastName, S.CompanyName, C.CompanyName,O.Freight, O.OrderID
+		GROUP BY O.OrderDate, E.TitleOfCourtesy, E.FirstName, E.LastName, S.CompanyName, C.CompanyName,O.Freight
 		
 END
 
