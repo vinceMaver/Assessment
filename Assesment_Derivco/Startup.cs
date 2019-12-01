@@ -6,6 +6,8 @@ using Assesment.Core.DataAccessLayer;
 using Assesment.Core.Interfaces;
 using Assesment.Core.Interfaces.DataAccess;
 using Assesment.Core.Services;
+using Assessment.Core.DataAccessLayer;
+using Assessment.Core.Interfaces.DataAccess;
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -34,6 +36,7 @@ namespace Assesment_Derivco
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddScoped(typeof(IUserService), typeof(UserService));
             services.AddScoped(typeof(IUserDataSource), typeof(UserDataSource));
+            services.AddScoped(typeof(IQueueConfiguration), typeof(QueueConfiguration));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +48,7 @@ namespace Assesment_Derivco
             }
             else
             {
+                //useExceptionHandler 
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }

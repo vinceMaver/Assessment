@@ -1,12 +1,14 @@
-using NUnit.Framework;
+﻿using NUnit.Framework;
+using Moq;
 
-namespace Tests
+namespace Assessment.Core.Unit.Test
 {
-    public class Tests
+    class UserSignUpsTest
     {
         [SetUp]
         public void Setup()
         {
+            //Mock
         }
 
         [Test]

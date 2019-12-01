@@ -28,7 +28,8 @@ namespace Assesment.Core.Services
 
         public async Task<IList<User>> GetUserSignUps()
         {
-            throw new NotImplementedException();
+           var users = await userDataSource.GetUserSignUps();
+            return users;
         }
     }
 }
